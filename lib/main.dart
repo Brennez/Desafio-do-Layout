@@ -38,6 +38,38 @@ class _HomePageState extends State<HomePage> {
 
   static const cardColor = 0xFFD7D3E2;
 
+  bool isHide = false;
+  String textOrder = "12";
+  String textClients = "20";
+  String textCities = "20";
+  String textMoney = "R\$  34.000,00";
+
+  toogleHide() {
+    if (isHide) {
+      isHide = false;
+    } else {
+      isHide = true;
+    }
+  }
+
+  changeVisibility() {
+    if (isHide) {
+      setState(() {
+        textOrder = " * ";
+        textClients = " * ";
+        textCities = " * ";
+        textMoney = "R\$ -,---";
+      });
+    } else {
+      setState(() {
+        textOrder = "12";
+        textClients = "20";
+        textCities = "20";
+        textMoney = "R\$  34.000,00";
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +124,10 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 20),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  toogleHide();
+                  changeVisibility();
+                },
                 icon: Icon(
                   Icons.remove_red_eye_outlined,
                   color: Color(contentColor),
@@ -118,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         margin: const EdgeInsets.only(left: 50),
                         child: Text(
-                          "12",
+                          textOrder,
                           style: GoogleFonts.concertOne(
                             color: Color(contentColor),
                             fontSize: 20,
@@ -147,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         margin: const EdgeInsets.only(left: 50),
                         child: Text(
-                          "20",
+                          textClients,
                           style: GoogleFonts.concertOne(
                             color: Color(contentColor),
                             fontSize: 20,
@@ -177,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         margin: const EdgeInsets.only(left: 50),
                         child: Text(
-                          "20",
+                          textCities,
                           style: GoogleFonts.concertOne(
                             color: Color(contentColor),
                             fontSize: 20,
@@ -225,7 +260,7 @@ class _HomePageState extends State<HomePage> {
                   Column(
                     children: [
                       Text(
-                        "R\$  34.000,00",
+                        textMoney,
                         style: GoogleFonts.concertOne(
                           color: Color(contentColor),
                           fontWeight: FontWeight.w500,
