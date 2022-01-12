@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,26 +45,40 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(30, 10, 30, 70),
-                width: 100,
-                height: 100,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey,
+          Container(
+            margin: const EdgeInsets.fromLTRB(30, 20, 30, 70),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage("assets/doguinho.jpg"),
                 ),
-              ),
-              const Text(
-                "Dog!",
-                style: TextStyle(
-                    color: Color(primaryColor),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 50),
-              )
-            ],
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 120),
+                      child: Text(
+                        "Olá",
+                        style: TextStyle(
+                            fontFamily: 'marker',
+                            color: Color(primaryColor),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20),
+                      ),
+                    ),
+                    Text(
+                      "Ziraldo!",
+                      style: TextStyle(
+                          fontFamily: 'marker',
+                          color: Color(primaryColor),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 50),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -70,9 +86,10 @@ class _HomePageState extends State<HomePage> {
               Text(
                 "Parabéns! Esse mês você fez ",
                 style: TextStyle(
+                    fontFamily: 'marker',
                     color: Color(primaryColor),
                     fontWeight: FontWeight.w600,
-                    fontSize: 16),
+                    fontSize: 20),
               ),
               IconButton(
                 onPressed: () {},
@@ -99,13 +116,12 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 20),
+                        margin: const EdgeInsets.only(left: 50),
                         child: Text(
                           "12",
-                          style: TextStyle(
-                            color: Color(
-                              contentColor,
-                            ),
+                          style: GoogleFonts.concertOne(
+                            color: Color(contentColor),
+                            fontSize: 20,
                           ),
                         ),
                       ),
@@ -118,8 +134,10 @@ class _HomePageState extends State<HomePage> {
                         "Novos\npedidos",
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            fontFamily: "marker",
                             color: Color(contentColor),
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20),
                       ),
                     ],
                   ),
@@ -127,11 +145,12 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 20),
+                        margin: const EdgeInsets.only(left: 50),
                         child: Text(
                           "20",
-                          style: TextStyle(
+                          style: GoogleFonts.concertOne(
                             color: Color(contentColor),
+                            fontSize: 20,
                           ),
                         ),
                       ),
@@ -144,8 +163,10 @@ class _HomePageState extends State<HomePage> {
                         "Novos\nclientes",
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                          fontFamily: "marker",
                           color: Color(contentColor),
                           fontWeight: FontWeight.w600,
+                          fontSize: 20,
                         ),
                       ),
                     ],
@@ -154,11 +175,12 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 20),
+                        margin: const EdgeInsets.only(left: 50),
                         child: Text(
                           "20",
-                          style: TextStyle(
+                          style: GoogleFonts.concertOne(
                             color: Color(contentColor),
+                            fontSize: 20,
                           ),
                         ),
                       ),
@@ -171,8 +193,11 @@ class _HomePageState extends State<HomePage> {
                         "Novas\ncidades",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Color(contentColor),
-                            fontWeight: FontWeight.w600),
+                          fontFamily: "marker",
+                          color: Color(contentColor),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
@@ -181,7 +206,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Card(
-            margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
+            margin: EdgeInsets.fromLTRB(30, 20, 30, 1),
             color: Color(cardColor),
             elevation: 12,
             shape: RoundedRectangleBorder(
@@ -201,19 +226,20 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         "R\$  34.000,00",
-                        style: TextStyle(
+                        style: GoogleFonts.concertOne(
                           color: Color(contentColor),
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w500,
                           fontSize: 30,
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 34, top: 5),
+                        margin: EdgeInsets.only(left: 70, top: 10),
                         child: Text(
                           "em novos pedidos",
                           style: TextStyle(
+                            fontFamily: "marker",
                             color: Color(contentColor),
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w600,
                             fontSize: 18,
                           ),
                         ),
@@ -223,34 +249,54 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Color(primaryColor),
-        unselectedItemColor: Color(contentColor),
-        items: const [
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: "Loja",
-            icon: Icon(
-              Icons.shop_2,
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.only(bottom: 20),
+        child: BottomNavyBar(
+          onItemSelected: (index) => setState(() {}),
+          backgroundColor: Color(backgroundColor),
+          showElevation: false,
+          iconSize: 30,
+          items: [
+            BottomNavyBarItem(
+              activeColor: Color(primaryColor),
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Home",
+                style: TextStyle(fontFamily: "marker", fontSize: 20),
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: "Clientes",
-            icon: Icon(Icons.people),
-          ),
-          BottomNavigationBarItem(
-            label: "Resultados",
-            icon: Icon(
-              Icons.moving_rounded,
+            BottomNavyBarItem(
+              activeColor: Color(primaryColor),
+              icon: Icon(Icons.shop_2),
+              title: Text(
+                "Loja",
+                style: TextStyle(fontFamily: "marker", fontSize: 20),
+              ),
             ),
-          )
-        ],
+            BottomNavyBarItem(
+              activeColor: Color(primaryColor),
+              icon: Icon(Icons.people),
+              title: Text(
+                "Loja",
+                style: TextStyle(fontFamily: "marker", fontSize: 20),
+              ),
+            ),
+            BottomNavyBarItem(
+              activeColor: Color(primaryColor),
+              icon: Icon(Icons.moving_rounded),
+              title: Text(
+                "Loja",
+                style: TextStyle(fontFamily: "marker", fontSize: 20),
+              ),
+            )
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
