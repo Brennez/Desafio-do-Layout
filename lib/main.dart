@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:app_layout/provider/themeProvider.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'widget/changeThemeButton.dart';
+import 'provider/themeProvider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,14 +16,19 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'app layout',
-      debugShowCheckedModeBanner: false,
-      // theme: ,
-      home: HomePage(),
-    );
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (context) => ThemeProvider(),
+        builder: (context, _) {
+          final themeProvider = Provider.of<ThemeProvider>(context);
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            themeMode: themeProvider.themeMode,
+            theme: MyTheme.lightMode,
+            darkTheme: MyTheme.darkMode,
+            home: HomePage(),
+          );
+        },
+      );
 }
 
 class HomePage extends StatefulWidget {
@@ -38,18 +47,18 @@ class _HomePageState extends State<HomePage> {
 
   static const cardColor = 0xFFD7D3E2;
 
+  int _currentIndex = 0;
+  late PageController _pageController;
+
   bool isHide = false;
+
   String textOrder = "12";
   String textClients = "20";
   String textCities = "20";
   String textMoney = "R\$  34.000,00";
 
-  toogleHide() {
-    if (isHide) {
-      isHide = false;
-    } else {
-      isHide = true;
-    }
+  toggleHide() {
+    isHide = !isHide;
   }
 
   changeVisibility() {
@@ -58,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         textOrder = " * ";
         textClients = " * ";
         textCities = " * ";
-        textMoney = "R\$ -,---";
+        textMoney = "R\$ --,---";
       });
     } else {
       setState(() {
@@ -73,12 +82,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(backgroundColor),
+      appBar: AppBar(
+        actions: [ChangeThemeButton()],
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            margin: const EdgeInsets.fromLTRB(30, 20, 30, 70),
+            margin: const EdgeInsets.fromLTRB(30, 20, 30, 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -100,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      "Ziraldo!",
+                      "Little Dog",
                       style: TextStyle(
                           fontFamily: 'marker',
                           color: Color(primaryColor),
@@ -125,18 +136,20 @@ class _HomePageState extends State<HomePage> {
               ),
               IconButton(
                 onPressed: () {
-                  toogleHide();
+                  toggleHide();
                   changeVisibility();
                 },
-                icon: Icon(
-                  Icons.remove_red_eye_outlined,
-                  color: Color(contentColor),
-                ),
+                icon: isHide
+                    ? Icon(
+                        Icons.visibility_off,
+                      )
+                    : Icon(
+                        Icons.remove_red_eye_outlined,
+                      ),
               )
             ],
           ),
           Card(
-            color: Color(cardColor),
             elevation: 12,
             margin: EdgeInsets.fromLTRB(30, 15, 30, 0),
             shape: RoundedRectangleBorder(
@@ -163,7 +176,6 @@ class _HomePageState extends State<HomePage> {
                       Icon(
                         Icons.shop_2,
                         size: 40,
-                        color: Color(primaryColor),
                       ),
                       Text(
                         "Novos\npedidos",
@@ -192,7 +204,6 @@ class _HomePageState extends State<HomePage> {
                       Icon(
                         Icons.people,
                         size: 40,
-                        color: Color(primaryColor),
                       ),
                       Text(
                         "Novos\nclientes",
@@ -222,7 +233,6 @@ class _HomePageState extends State<HomePage> {
                       Icon(
                         Icons.location_city_rounded,
                         size: 40,
-                        color: Color(primaryColor),
                       ),
                       Text(
                         "Novas\ncidades",
@@ -242,7 +252,6 @@ class _HomePageState extends State<HomePage> {
           ),
           Card(
             margin: EdgeInsets.fromLTRB(30, 20, 30, 1),
-            color: Color(cardColor),
             elevation: 12,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -255,7 +264,6 @@ class _HomePageState extends State<HomePage> {
                   Icon(
                     Icons.shop_2,
                     size: 60,
-                    color: Color(primaryColor),
                   ),
                   Column(
                     children: [
@@ -290,7 +298,12 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: Container(
         margin: EdgeInsets.only(bottom: 20),
         child: BottomNavyBar(
-          onItemSelected: (index) => setState(() {}),
+          selectedIndex: _currentIndex,
+          onItemSelected: (index) {
+            setState(() => _currentIndex = index);
+            _pageController.animateToPage(index,
+                duration: Duration(milliseconds: 300), curve: Curves.ease);
+          },
           backgroundColor: Color(backgroundColor),
           showElevation: false,
           iconSize: 30,
@@ -299,7 +312,7 @@ class _HomePageState extends State<HomePage> {
               activeColor: Color(primaryColor),
               icon: Icon(
                 Icons.home,
-                color: Colors.white,
+                color: Color(primaryColor),
               ),
               title: Text(
                 "Home",
@@ -318,7 +331,7 @@ class _HomePageState extends State<HomePage> {
               activeColor: Color(primaryColor),
               icon: Icon(Icons.people),
               title: Text(
-                "Loja",
+                "Clientes",
                 style: TextStyle(fontFamily: "marker", fontSize: 20),
               ),
             ),
@@ -326,7 +339,7 @@ class _HomePageState extends State<HomePage> {
               activeColor: Color(primaryColor),
               icon: Icon(Icons.moving_rounded),
               title: Text(
-                "Loja",
+                "Gráficos",
                 style: TextStyle(fontFamily: "marker", fontSize: 20),
               ),
             )
