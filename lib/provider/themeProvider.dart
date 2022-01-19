@@ -1,3 +1,4 @@
+import 'package:app_layout/consts/colors/colors.dart';
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
@@ -11,26 +12,33 @@ class ThemeProvider extends ChangeNotifier {
 }
 
 class MyTheme {
+  //Light mode theme
   static final darkMode = ThemeData(
-      scaffoldBackgroundColor: const Color(0XFF101010),
-      colorScheme: const ColorScheme.dark(),
-      iconTheme: const IconThemeData(
-        color: Colors.white,
-      ),
-      cardColor: const Color(0xFF210457),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Color(0XFF101010),
-        elevation: 0.0,
-      ));
+    scaffoldBackgroundColor: kDarkBackgroundColor,
+    colorScheme: const ColorScheme.dark(),
+    iconTheme: const IconThemeData(
+      color: Colors.white,
+    ),
+    cardColor: kDarkCardColor,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: kAppBarDarkColor,
+      elevation: 0,
+    ),
+    textTheme: const TextTheme(
+      bodyText1: TextStyle(color: Colors.white),
+    ),
+  );
 
+  // Dark Mode theme
   static final lightMode = ThemeData(
-      scaffoldBackgroundColor: const Color(0xFFE6E6E6),
-      iconTheme: const IconThemeData(
-        color: Color(0xFF210457),
-      ),
-      cardColor: const Color(0xFFD7D3E2),
-      appBarTheme: const AppBarTheme(
-        elevation: 0.0,
-        color: Color(0xFFE6E6E6),
-      ));
+    scaffoldBackgroundColor: kBackgroundColor,
+    iconTheme: const IconThemeData(
+      color: kPrimaryColor,
+    ),
+    cardColor: kCardColor,
+    appBarTheme: const AppBarTheme(
+      elevation: 0.0,
+      color: kBackgroundColor,
+    ),
+  );
 }

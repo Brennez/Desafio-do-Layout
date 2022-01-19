@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:app_layout/consts/colors/colors.dart';
 import 'package:app_layout/provider/themeProvider.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
@@ -39,14 +40,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const primaryColor = 0xFF210457;
-
-  static const backgroundColor = 0xFFE6E6E6;
-
-  static const contentColor = 0xFF4B1CA2;
-
-  static const cardColor = 0xFFD7D3E2;
-
   int _currentIndex = 0;
   late PageController _pageController;
 
@@ -105,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                         "Olá",
                         style: TextStyle(
                             fontFamily: 'marker',
-                            color: Color(primaryColor),
+                            color: kPrimaryColor,
                             fontWeight: FontWeight.w400,
                             fontSize: 20),
                       ),
@@ -114,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                       "Little Dog",
                       style: TextStyle(
                           fontFamily: 'marker',
-                          color: Color(primaryColor),
+                          color: kPrimaryColor,
                           fontWeight: FontWeight.w700,
                           fontSize: 50),
                     ),
@@ -130,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                 "Parabéns! Esse mês você fez ",
                 style: TextStyle(
                     fontFamily: 'marker',
-                    color: Color(primaryColor),
+                    color: kPrimaryColor,
                     fontWeight: FontWeight.w600,
                     fontSize: 20),
               ),
@@ -168,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           textOrder,
                           style: GoogleFonts.concertOne(
-                            color: Color(contentColor),
+                            color: kContentColor,
                             fontSize: 20,
                           ),
                         ),
@@ -182,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontFamily: "marker",
-                            color: Color(contentColor),
+                            color: kContentColor,
                             fontWeight: FontWeight.w600,
                             fontSize: 20),
                       ),
@@ -196,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           textClients,
                           style: GoogleFonts.concertOne(
-                            color: Color(contentColor),
+                            color: kContentColor,
                             fontSize: 20,
                           ),
                         ),
@@ -210,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: "marker",
-                          color: Color(contentColor),
+                          color: kContentColor,
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
                         ),
@@ -225,7 +218,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           textCities,
                           style: GoogleFonts.concertOne(
-                            color: Color(contentColor),
+                            color: kContentColor,
                             fontSize: 20,
                           ),
                         ),
@@ -239,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: "marker",
-                          color: Color(contentColor),
+                          color: kContentColor,
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
                         ),
@@ -270,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         textMoney,
                         style: GoogleFonts.concertOne(
-                          color: Color(contentColor),
+                          color: kContentColor,
                           fontWeight: FontWeight.w500,
                           fontSize: 30,
                         ),
@@ -281,7 +274,7 @@ class _HomePageState extends State<HomePage> {
                           "em novos pedidos",
                           style: TextStyle(
                             fontFamily: "marker",
-                            color: Color(contentColor),
+                            color: kContentColor,
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
                           ),
@@ -304,15 +297,15 @@ class _HomePageState extends State<HomePage> {
             _pageController.animateToPage(index,
                 duration: Duration(milliseconds: 300), curve: Curves.ease);
           },
-          backgroundColor: Color(backgroundColor),
+          backgroundColor: kBackgroundColor,
           showElevation: false,
           iconSize: 30,
           items: [
             BottomNavyBarItem(
-              activeColor: Color(primaryColor),
+              activeColor: kPrimaryColor,
               icon: Icon(
                 Icons.home,
-                color: Color(primaryColor),
+                color: kPrimaryColor,
               ),
               title: Text(
                 "Home",
@@ -320,7 +313,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             BottomNavyBarItem(
-              activeColor: Color(primaryColor),
+              activeColor: kPrimaryColor,
               icon: Icon(Icons.shop_2),
               title: Text(
                 "Loja",
@@ -328,7 +321,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             BottomNavyBarItem(
-              activeColor: Color(primaryColor),
+              activeColor: kPrimaryColor,
               icon: Icon(Icons.people),
               title: Text(
                 "Clientes",
@@ -336,7 +329,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             BottomNavyBarItem(
-              activeColor: Color(primaryColor),
+              activeColor: kPrimaryColor,
               icon: Icon(Icons.moving_rounded),
               title: Text(
                 "Gráficos",
@@ -349,7 +342,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add),
-        backgroundColor: Color(primaryColor),
+        backgroundColor: kPrimaryColor,
       ),
     );
   }
