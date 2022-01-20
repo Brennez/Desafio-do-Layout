@@ -16,4 +16,6 @@ const Color kDarkBackgroundColor = Color(0XFF101010);
 
 const Color kDarkCardColor = Color(0xFF210457);
 
+const Color kDarkPrimaryColor = Colors.white70;
+
 const Color kAppBarDarkColor = Color(0XFF101010);

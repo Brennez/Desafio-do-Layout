@@ -3,6 +3,7 @@
 import 'package:app_layout/consts/colors/colors.dart';
 import 'package:app_layout/provider/themeProvider.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -96,20 +97,12 @@ class _HomePageState extends State<HomePage> {
                       margin: EdgeInsets.only(left: 120),
                       child: Text(
                         "Olá",
-                        style: TextStyle(
-                            fontFamily: 'marker',
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20),
+                        style: Theme.of(context).textTheme.caption,
                       ),
                     ),
                     Text(
                       "Little Dog",
-                      style: TextStyle(
-                          fontFamily: 'marker',
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 50),
+                      style: Theme.of(context).textTheme.headline1,
                     ),
                   ],
                 )
@@ -121,11 +114,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Text(
                 "Parabéns! Esse mês você fez ",
-                style: TextStyle(
-                    fontFamily: 'marker',
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20),
+                style: Theme.of(context).textTheme.caption,
               ),
               IconButton(
                 onPressed: () {
@@ -161,24 +150,16 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           textOrder,
                           style: GoogleFonts.concertOne(
-                            color: kContentColor,
-                            fontSize: 20,
-                          ),
+                              textStyle: Theme.of(context).textTheme.subtitle1),
                         ),
                       ),
                       Icon(
                         Icons.shop_2,
                         size: 40,
                       ),
-                      Text(
-                        "Novos\npedidos",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: "marker",
-                            color: kContentColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20),
-                      ),
+                      Text("Novos\npedidos",
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.caption),
                     ],
                   ),
                   Column(
@@ -189,25 +170,16 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           textClients,
                           style: GoogleFonts.concertOne(
-                            color: kContentColor,
-                            fontSize: 20,
-                          ),
+                              textStyle: Theme.of(context).textTheme.subtitle1),
                         ),
                       ),
                       Icon(
                         Icons.people,
                         size: 40,
                       ),
-                      Text(
-                        "Novos\nclientes",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "marker",
-                          color: kContentColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
-                        ),
-                      ),
+                      Text("Novos\nclientes",
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.caption),
                     ],
                   ),
                   Column(
@@ -218,25 +190,16 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           textCities,
                           style: GoogleFonts.concertOne(
-                            color: kContentColor,
-                            fontSize: 20,
-                          ),
+                              textStyle: Theme.of(context).textTheme.subtitle1),
                         ),
                       ),
                       Icon(
                         Icons.location_city_rounded,
                         size: 40,
                       ),
-                      Text(
-                        "Novas\ncidades",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "marker",
-                          color: kContentColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
-                        ),
-                      ),
+                      Text("Novas\ncidades",
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.caption),
                     ],
                   ),
                 ],
@@ -263,21 +226,14 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         textMoney,
                         style: GoogleFonts.concertOne(
-                          color: kContentColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30,
+                          textStyle: Theme.of(context).textTheme.headline2,
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 70, top: 10),
+                        margin: EdgeInsets.only(left: 60, top: 10),
                         child: Text(
                           "em novos pedidos",
-                          style: TextStyle(
-                            fontFamily: "marker",
-                            color: kContentColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                          ),
+                          style: Theme.of(context).textTheme.subtitle2,
                         ),
                       ),
                     ],
@@ -297,7 +253,8 @@ class _HomePageState extends State<HomePage> {
             _pageController.animateToPage(index,
                 duration: Duration(milliseconds: 300), curve: Curves.ease);
           },
-          backgroundColor: kBackgroundColor,
+          backgroundColor:
+              Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           showElevation: false,
           iconSize: 30,
           items: [
@@ -305,35 +262,44 @@ class _HomePageState extends State<HomePage> {
               activeColor: kPrimaryColor,
               icon: Icon(
                 Icons.home,
-                color: kPrimaryColor,
+                color: Theme.of(context).iconTheme.color,
               ),
               title: Text(
                 "Home",
-                style: TextStyle(fontFamily: "marker", fontSize: 20),
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
             BottomNavyBarItem(
               activeColor: kPrimaryColor,
-              icon: Icon(Icons.shop_2),
+              icon: Icon(
+                Icons.shop_2,
+                color: Theme.of(context).iconTheme.color,
+              ),
               title: Text(
                 "Loja",
-                style: TextStyle(fontFamily: "marker", fontSize: 20),
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
             BottomNavyBarItem(
               activeColor: kPrimaryColor,
-              icon: Icon(Icons.people),
+              icon: Icon(
+                Icons.people,
+                color: Theme.of(context).iconTheme.color,
+              ),
               title: Text(
                 "Clientes",
-                style: TextStyle(fontFamily: "marker", fontSize: 20),
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
             BottomNavyBarItem(
               activeColor: kPrimaryColor,
-              icon: Icon(Icons.moving_rounded),
+              icon: Icon(
+                Icons.moving_rounded,
+                color: Theme.of(context).iconTheme.color,
+              ),
               title: Text(
                 "Gráficos",
-                style: TextStyle(fontFamily: "marker", fontSize: 20),
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             )
           ],
@@ -341,7 +307,10 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: kBackgroundColor,
+        ),
         backgroundColor: kPrimaryColor,
       ),
     );
