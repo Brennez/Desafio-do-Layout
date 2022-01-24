@@ -1,3 +1,4 @@
+import 'package:app_layout/consts/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -136,6 +137,7 @@ class _ExpandableFabState extends State<ExpandableFab>
             onPressed: _toggle,
             child: const Icon(
               Icons.add,
+              color: kBackgroundColor,
             ),
           ),
         ),
@@ -198,11 +200,10 @@ class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Material(
         shape: const CircleBorder(),
         clipBehavior: Clip.antiAlias,
-        color: const Color(0xFF210457),
+        color: kContentColor,
         elevation: 4.0,
         child: IconButton(
           onPressed: onPressed,

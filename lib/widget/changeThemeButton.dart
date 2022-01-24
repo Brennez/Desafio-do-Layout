@@ -1,3 +1,4 @@
+import 'package:app_layout/consts/colors/colors.dart';
 import 'package:app_layout/provider/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,8 +10,8 @@ class ChangeThemeButton extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Switch.adaptive(
-        activeColor: Colors.white,
-        inactiveThumbColor: Colors.black,
+        activeColor: kDarkPrimaryColor,
+        inactiveThumbColor: kPrimaryColor,
         value: themeProvider.isDark,
         onChanged: (value) {
           final provider = Provider.of<ThemeProvider>(context, listen: false);

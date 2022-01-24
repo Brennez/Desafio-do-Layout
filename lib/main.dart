@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              margin: const EdgeInsets.fromLTRB(30, 20, 30, 30),
+              margin: const EdgeInsets.fromLTRB(30, 0, 30, 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                   Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 120),
+                        margin: EdgeInsets.only(left: 140),
                         child: Text(
                           "Olá",
                           style: Theme.of(context).textTheme.caption,
@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Card(
               elevation: 12,
-              margin: EdgeInsets.fromLTRB(30, 15, 30, 0),
+              margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Card(
-              margin: EdgeInsets.fromLTRB(30, 20, 30, 1),
+              margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
               elevation: 12,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
