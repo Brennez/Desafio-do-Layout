@@ -2,8 +2,8 @@
 
 import 'package:app_layout/consts/colors/colors.dart';
 import 'package:app_layout/provider/themeProvider.dart';
+import 'package:app_layout/widget/expandableFab.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -79,171 +79,190 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         actions: [ChangeThemeButton()],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 20, 30, 30),
-            child: Row(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.fromLTRB(30, 20, 30, 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage("assets/doguinho.jpg"),
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 120),
+                        child: Text(
+                          "Olá",
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                      ),
+                      Text(
+                        "Little Dog",
+                        style: Theme.of(context).textTheme.headline1,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage("assets/doguinho.jpg"),
+                Text(
+                  "Parabéns! Esse mês você fez ",
+                  style: Theme.of(context).textTheme.caption,
                 ),
-                Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 120),
-                      child: Text(
-                        "Olá",
-                        style: Theme.of(context).textTheme.caption,
-                      ),
-                    ),
-                    Text(
-                      "Little Dog",
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                  ],
+                IconButton(
+                  onPressed: () {
+                    toggleHide();
+                    changeVisibility();
+                  },
+                  icon: isHide
+                      ? Icon(
+                          Icons.visibility_off,
+                        )
+                      : Icon(
+                          Icons.remove_red_eye_outlined,
+                        ),
                 )
               ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                "Parabéns! Esse mês você fez ",
-                style: Theme.of(context).textTheme.caption,
+            Card(
+              elevation: 12,
+              margin: EdgeInsets.fromLTRB(30, 15, 30, 0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
               ),
-              IconButton(
-                onPressed: () {
-                  toggleHide();
-                  changeVisibility();
-                },
-                icon: isHide
-                    ? Icon(
-                        Icons.visibility_off,
-                      )
-                    : Icon(
-                        Icons.remove_red_eye_outlined,
-                      ),
-              )
-            ],
-          ),
-          Card(
-            elevation: 12,
-            margin: EdgeInsets.fromLTRB(30, 15, 30, 0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 50),
-                        child: Text(
-                          textOrder,
-                          style: GoogleFonts.concertOne(
-                              textStyle: Theme.of(context).textTheme.subtitle1),
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 50),
+                          child: Text(
+                            textOrder,
+                            style: GoogleFonts.concertOne(
+                                textStyle:
+                                    Theme.of(context).textTheme.subtitle1),
+                          ),
                         ),
-                      ),
-                      Icon(
-                        Icons.shop_2,
-                        size: 40,
-                      ),
-                      Text("Novos\npedidos",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.caption),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 50),
-                        child: Text(
-                          textClients,
-                          style: GoogleFonts.concertOne(
-                              textStyle: Theme.of(context).textTheme.subtitle1),
+                        Icon(
+                          Icons.shop_2,
+                          size: 40,
                         ),
-                      ),
-                      Icon(
-                        Icons.people,
-                        size: 40,
-                      ),
-                      Text("Novos\nclientes",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.caption),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 50),
-                        child: Text(
-                          textCities,
-                          style: GoogleFonts.concertOne(
-                              textStyle: Theme.of(context).textTheme.subtitle1),
+                        Text("Novos\npedidos",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.caption),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 50),
+                          child: Text(
+                            textClients,
+                            style: GoogleFonts.concertOne(
+                                textStyle:
+                                    Theme.of(context).textTheme.subtitle1),
+                          ),
                         ),
-                      ),
-                      Icon(
-                        Icons.location_city_rounded,
-                        size: 40,
-                      ),
-                      Text("Novas\ncidades",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.caption),
-                    ],
-                  ),
-                ],
+                        Icon(
+                          Icons.people,
+                          size: 40,
+                        ),
+                        Text("Novos\nclientes",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.caption),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 50),
+                          child: Text(
+                            textCities,
+                            style: GoogleFonts.concertOne(
+                                textStyle:
+                                    Theme.of(context).textTheme.subtitle1),
+                          ),
+                        ),
+                        Icon(
+                          Icons.location_city_rounded,
+                          size: 40,
+                        ),
+                        Text("Novas\ncidades",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.caption),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Card(
-            margin: EdgeInsets.fromLTRB(30, 20, 30, 1),
-            elevation: 12,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(
-                    Icons.shop_2,
-                    size: 60,
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        textMoney,
-                        style: GoogleFonts.concertOne(
-                          textStyle: Theme.of(context).textTheme.headline2,
+            Card(
+              margin: EdgeInsets.fromLTRB(30, 20, 30, 1),
+              elevation: 12,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(
+                      Icons.shop_2,
+                      size: 60,
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          textMoney,
+                          style: GoogleFonts.concertOne(
+                            textStyle: Theme.of(context).textTheme.headline2,
+                          ),
                         ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 60, top: 10),
-                        child: Text(
-                          "em novos pedidos",
-                          style: Theme.of(context).textTheme.subtitle2,
+                        Container(
+                          margin: EdgeInsets.only(left: 60, top: 10),
+                          child: Text(
+                            "em novos pedidos",
+                            style: Theme.of(context).textTheme.subtitle2,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+      floatingActionButton: ExpandableFab(distance: 112.0, children: [
+        ActionButton(
+          onPressed: () {},
+          icon: Icons.person_add,
+        ),
+        ActionButton(
+          onPressed: () {},
+          icon: Icons.add_shopping_cart,
+        ),
+        ActionButton(
+          onPressed: () {},
+          icon: Icons.person_add,
+        ),
+      ]),
       bottomNavigationBar: Container(
         margin: EdgeInsets.only(bottom: 20),
         child: BottomNavyBar(
@@ -301,17 +320,9 @@ class _HomePageState extends State<HomePage> {
                 "Gráficos",
                 style: Theme.of(context).textTheme.subtitle2,
               ),
-            )
+            ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(
-          Icons.add,
-          color: kBackgroundColor,
-        ),
-        backgroundColor: kPrimaryColor,
       ),
     );
   }
