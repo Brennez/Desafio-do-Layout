@@ -2,6 +2,7 @@
 
 import 'package:app_layout/consts/colors/colors.dart';
 import 'package:app_layout/provider/themeProvider.dart';
+import 'package:app_layout/widget/contentCard.dart';
 import 'package:app_layout/widget/expandableFab.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
@@ -143,69 +144,21 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 50),
-                          child: Text(
-                            textOrder,
-                            style: GoogleFonts.concertOne(
-                                textStyle:
-                                    Theme.of(context).textTheme.subtitle1),
-                          ),
-                        ),
-                        Icon(
-                          Icons.shop_2,
-                          size: 40,
-                        ),
-                        Text("Novos\npedidos",
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.caption),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 50),
-                          child: Text(
-                            textClients,
-                            style: GoogleFonts.concertOne(
-                                textStyle:
-                                    Theme.of(context).textTheme.subtitle1),
-                          ),
-                        ),
-                        Icon(
-                          Icons.people,
-                          size: 40,
-                        ),
-                        Text("Novos\nclientes",
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.caption),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 50),
-                          child: Text(
-                            textCities,
-                            style: GoogleFonts.concertOne(
-                                textStyle:
-                                    Theme.of(context).textTheme.subtitle1),
-                          ),
-                        ),
-                        Icon(
-                          Icons.location_city_rounded,
-                          size: 40,
-                        ),
-                        Text("Novas\ncidades",
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.caption),
-                      ],
-                    ),
+                    ContentCard(
+                        cardType: 'vertical',
+                        text: "Novos\npedidos",
+                        icon: Icons.shop_2,
+                        number: textOrder),
+                    ContentCard(
+                        cardType: 'vertical',
+                        text: "Novos\nclientes",
+                        icon: Icons.people_alt_rounded,
+                        number: textClients),
+                    ContentCard(
+                        cardType: 'vertical',
+                        text: "Novas\ncidades",
+                        icon: Icons.location_city_rounded,
+                        number: textCities)
                   ],
                 ),
               ),
@@ -217,32 +170,12 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Container(
-                padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.shop_2,
-                      size: 60,
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          textMoney,
-                          style: GoogleFonts.concertOne(
-                            textStyle: Theme.of(context).textTheme.headline2,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 60, top: 10),
-                          child: Text(
-                            "em novos pedidos",
-                            style: Theme.of(context).textTheme.subtitle2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
+                child: ContentCard(
+                  text: "em novos pedidos",
+                  cardType: 'horizontal',
+                  icon: Icons.shop_2,
+                  number: textMoney,
                 ),
               ),
             ),
